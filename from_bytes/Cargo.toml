@@ -3,11 +3,21 @@ name = "from_bytes"
 version = "0.2.0"
 authors = ["Jan Starke <Jan.Starke@t-systems.com>"]
 edition = "2018"
-repository = "https://github.com/janstarke/libpefile"
+repository = "https://github.com/janstarke/from_bytes"
 description = "create from_bytes() and packed_size() to read binary data into structs"
 license = "GPL-3.0"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+u8_arrays = []
+u16_arrays = []
+u32_arrays = []
+u64_arrays = []
+i8_arrays = []
+i16_arrays = []
+i32_arrays = []
+i64_arrays = []
 
 [dependencies]
 duplicate = "0.2"
+
+from_bytes_derive = {version="=0.2.0", path="../from_bytes_derive"}

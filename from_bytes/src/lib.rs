@@ -36,6 +36,34 @@ pub trait PackedSize {
 )]
 impl PackedSize for int_type { fn packed_size() -> usize { return size_of::<int_type>(); } }
 
-impl PackedSize for [u8;8] { fn packed_size() -> usize { return 8 * size_of::<u8>(); } }
-impl PackedSize for [u16;4] { fn packed_size() -> usize { return 4 * size_of::<u16>(); } }
-impl PackedSize for [u16;10] { fn packed_size() -> usize { return 10 * size_of::<u16>(); } }
+#[cfg(feature = "u8_arrays")]
+#[duplicate(array_length; [1]; [2]; [3]; [4]; [6]; [8]; [10]; [12]; [14]; [16]; )]
+impl PackedSize for [u8;array_length] { fn packed_size() -> usize { return array_length * size_of::<u8>(); } }
+
+#[cfg(feature = "u16_arrays")]
+#[duplicate(array_length; [1]; [2]; [3]; [4]; [6]; [8]; [10]; [12]; [14]; [16]; )]
+impl PackedSize for [u16;array_length] { fn packed_size() -> usize { return array_length * size_of::<u16>(); } }
+
+#[cfg(feature = "u32_arrays")]
+#[duplicate(array_length; [1]; [2]; [3]; [4]; [6]; [8]; [10]; [12]; [14]; [16]; )]
+impl PackedSize for [u32;array_length] { fn packed_size() -> usize { return array_length * size_of::<u32>(); } }
+
+#[cfg(feature = "u64_arrays")]
+#[duplicate(array_length; [1]; [2]; [3]; [4]; [6]; [8]; [10]; [12]; [14]; [16]; )]
+impl PackedSize for [u64;array_length] { fn packed_size() -> usize { return array_length * size_of::<u64>(); } }
+
+#[cfg(feature = "i8_arrays")]
+#[duplicate(array_length; [1]; [2]; [3]; [4]; [6]; [8]; [10]; [12]; [14]; [16]; )]
+impl PackedSize for [i8;array_length] { fn packed_size() -> usize { return array_length * size_of::<i8>(); } }
+
+#[cfg(feature = "i16_arrays")]
+#[duplicate(array_length; [1]; [2]; [3]; [4]; [6]; [8]; [10]; [12]; [14]; [16]; )]
+impl PackedSize for [i16;array_length] { fn packed_size() -> usize { return array_length * size_of::<i16>(); } }
+
+#[cfg(feature = "i32_arrays")]
+#[duplicate(array_length; [1]; [2]; [3]; [4]; [6]; [8]; [10]; [12]; [14]; [16]; )]
+impl PackedSize for [i32;array_length] { fn packed_size() -> usize { return array_length * size_of::<i32>(); } }
+
+#[cfg(feature = "i64_arrays")]
+#[duplicate(array_length; [1]; [2]; [3]; [4]; [6]; [8]; [10]; [12]; [14]; [16]; )]
+impl PackedSize for [i64;array_length] { fn packed_size() -> usize { return array_length * size_of::<i64>(); } }
