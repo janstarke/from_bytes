@@ -46,6 +46,42 @@ pub fn packed_size_derive_u32(input: proc_macro::TokenStream) -> proc_macro::Tok
     static_packed_size(size_of::<u32>(), input)
 }
 
+#[proc_macro_derive(PackedSize_u64)]
+pub fn packed_size_derive_u64(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    static_packed_size(size_of::<u64>(), input)
+}
+
+#[proc_macro_derive(PackedSize_u128)]
+pub fn packed_size_derive_u128(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    static_packed_size(size_of::<u128>(), input)
+}
+
+
+#[proc_macro_derive(PackedSize_i8)]
+pub fn packed_size_derive_i8(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    static_packed_size(size_of::<i8>(), input)
+}
+
+#[proc_macro_derive(PackedSize_i16)]
+pub fn packed_size_derive_i16(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    static_packed_size(size_of::<i16>(), input)
+}
+
+#[proc_macro_derive(PackedSize_i32)]
+pub fn packed_size_derive_i32(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    static_packed_size(size_of::<i32>(), input)
+}
+
+#[proc_macro_derive(PackedSize_i64)]
+pub fn packed_size_derive_i64(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    static_packed_size(size_of::<i64>(), input)
+}
+
+#[proc_macro_derive(PackedSize_i128)]
+pub fn packed_size_derive_i128(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    static_packed_size(size_of::<i128>(), input)
+}
+
 fn static_packed_size(size: usize, input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let ast: DeriveInput = syn::parse(input).unwrap();
     let name = &ast.ident;

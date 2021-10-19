@@ -1,6 +1,6 @@
 [package]
 name = "from_bytes"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Jan Starke <Jan.Starke@t-systems.com>"]
 edition = "2018"
 repository = "https://github.com/janstarke/from_bytes"
@@ -20,4 +20,4 @@ i64_arrays = []
 [dependencies]
 duplicate = "0.2"
 
-from_bytes_derive = {version="=0.2.0", path="../from_bytes_derive"}
+from_bytes_derive = {version="=0.2.1", path="../from_bytes_derive"}
