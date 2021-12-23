@@ -25,6 +25,16 @@ fn impl_from_bytes(ast: &syn::DeriveInput) -> TokenStream {
                     Err(why) => Err(std::io::Error::new(std::io::ErrorKind::InvalidData, format!("{:?}", why)))
                 }
             }
+
+            fn from_stream<R>(stream: &mut R) -> std::io::Result<Box<Self>> where R: Read {
+                let size = Self::packed_size();
+                let mut buffer = vec![0; size];
+                stream.read_exact(&mut buffer)?;
+                match Self::unpack_from_slice(&buffer[..]) {
+                    Ok(v)    => Ok(Box::new(v)),
+                    Err(why) => Err(std::io::Error::new(std::io::ErrorKind::InvalidData, format!("{:?}", why)))
+                }
+            }
         }
     };
     gen.into()

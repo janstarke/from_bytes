@@ -1,11 +1,13 @@
 use std::mem::size_of;
 use duplicate::duplicate;
+use std::io::Read;
 
 pub trait StructFromBytes<T: PackedSize = Self>: PackedSize {
     /// Creates an instance of `T` by parsing a slice of bytes.
     /// 
     /// This method assumes that the byte slice contains unaligned data.
     fn from_bytes(slice: &[u8], offset: usize) -> std::io::Result<Box<Self>>;
+    fn from_stream<R>(stream: &mut R) -> std::io::Result<Box<Self>> where R: Read;
 }
 
 
